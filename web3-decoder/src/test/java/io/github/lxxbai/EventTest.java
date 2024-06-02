@@ -1,0 +1,27 @@
+package io.github.lxxbai;
+
+
+import io.github.lxxbai.datatypes.Event;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author 王大锤
+ * @date 2024/4/24 16:20
+ **/
+public class EventTest {
+
+    public static void main(String[] args) {
+        Event event = new Event("Swap ( address indexed sender, uint256 amount0In, uint256 amount1In, uint256 amount0Out, uint256 amount1Out,address indexed to)");
+        List<String> topics = new ArrayList<>();
+        topics.add("0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822");
+        topics.add("0x000000000000000000000000738e79fbc9010521763944ddf13aad7f61502221");
+        topics.add("0x000000000000000000000000be83e7db6c6fb4f5db4f22294faf3868ca443f2b");
+        Map<String, Object> objectMap = event.decodeToMap("0x00000000000000000000000000000000000000000000000001934114c06c17e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000386123c52025360000", topics);
+        List<Object> decode = event.decode("0x00000000000000000000000000000000000000000000000001934114c06c17e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000386123c52025360000", topics);
+        System.out.println(decode);
+        System.out.println(objectMap);
+    }
+}
